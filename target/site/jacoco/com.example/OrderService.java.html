@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Order Service (TP05)</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">OrderService.java</span></div><h1>OrderService.java</h1><pre class="source lang-java linenums">package com.example;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Logger;
+
+<span class="fc" id="L7">public class OrderService {</span>
+<span class="fc" id="L8">    private static final Logger LOG = Logger.getLogger(OrderService.class.getName());</span>
+<span class="fc" id="L9">    private final Map&lt;Integer, String&gt; orders = new HashMap&lt;&gt;();</span>
+
+    public void addOrder(int id, String description) {
+<span class="fc bfc" id="L12" title="All 2 branches covered.">        if (orders.containsKey(id)) {</span>
+<span class="fc" id="L13">            throw new IllegalArgumentException(&quot;Order already exists: &quot; + id);</span>
+        }
+<span class="fc" id="L15">        orders.put(id, description);</span>
+<span class="fc" id="L16">    }</span>
+
+    public String getOrder(int id) {
+<span class="fc" id="L19">        return orders.get(id);</span>
+    }
+
+    public boolean removeOrder(int id) {
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        return orders.remove(id) != null;</span>
+    }
+
+    public int countOrders() {
+<span class="fc" id="L27">        return orders.size();</span>
+    }
+
+    public String riskyConcatSQL(String userInput) {
+<span class="fc" id="L31">        return &quot;SELECT * FROM orders WHERE name = '&quot; + userInput + &quot;'&quot;;</span>
+    }
+
+    public void duplicateLogic(int x) {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (x &gt; 10) {</span>
+<span class="fc" id="L36">            LOG.info(&quot;Big number&quot;);</span>
+        } else {
+<span class="fc" id="L38">            LOG.info(&quot;Small number&quot;);</span>
+        }
+<span class="fc" id="L40">    }</span>
+
+    public void duplicateLogic2(int x) {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (x &gt; 10) {</span>
+<span class="fc" id="L44">            LOG.info(&quot;Big number&quot;);</span>
+        } else {
+<span class="fc" id="L46">            LOG.info(&quot;Small number&quot;);</span>
+        }
+<span class="fc" id="L48">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
